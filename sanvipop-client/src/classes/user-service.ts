@@ -4,9 +4,11 @@ Proyecto final en TypeScript */
 
 // Esta clase se encarga de realizar las peticiones al servidor para obtener información de usuarios
 
-// Importamos las clases, interfaces y librerías necesarias.
-import { Http } from "./http.js";
-import { SERVER } from "../constants.js";
+// Importamos la constante SERVER desde el archivo constants.ts
+import { SERVER } from "../constants";
+
+// Importamos la clase Http desde el archivo http.ts
+import { Http } from "./http";
 
 export class UserService {
     #http = new Http();
@@ -20,6 +22,7 @@ export class UserService {
         }
     }
 
+    // Método para obtener los datos del usuario logueado
     async getSelfProfile(): Promise<Response> {
         try {
             return await this.#http.get(SERVER + "/users/me");

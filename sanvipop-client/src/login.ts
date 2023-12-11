@@ -4,10 +4,14 @@ Proyecto final en TypeScript */
 
 // En este fichero se encuentra el código para el inicio de sesión de usuarios
 
-// Importamos las clases, interfaces y librerias necesarias
+// Importamos la biblioteca Sweetalert
 import Swal from "sweetalert2";
+
+// Importamos las clases MyGeolocation y AuthService desde sus respectivos archivos
 import { MyGeolocation } from "../src/classes/my-geolocation";
 import { AuthService } from "./classes/auth-service";
+
+// Importamos la interfaz UserLogin desde el archivo interfaces/user.ts
 import { UserLogin } from "./interfaces/user";
 
 // Instanciamos la clase AuthService

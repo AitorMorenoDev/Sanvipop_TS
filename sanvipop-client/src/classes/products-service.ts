@@ -4,15 +4,22 @@ Proyecto final en TypeScript */
 
 // Esta clase se encarga de realizar las peticiones al servidor para la obtención de productos
 
-// Importamos las clases, interfaces y librerías necesarias.
+// Importamos la biblioteca Sweetalert
 import Swal from "sweetalert2";
+
+// Importamos la constante SERVER desde el archivo constants.ts
 import { SERVER } from "../constants";
+
+// Importamos la clase Http desde el archivo http.ts
 import { Http } from "./http";
+
+// Importamos las interfaces Product y ProductInsert desde el archivo interfaces/product.ts
 import { Product, ProductInsert } from "../interfaces/product";
 
 export class ProductsService {
     #http = new Http();
 
+    // Método para obtener todos los productos
     async getAll(): Promise<Product[]> {
         try {
             return await this.#http.get<Product[]>(SERVER + "/products");
@@ -27,6 +34,7 @@ export class ProductsService {
         }
     }
 
+    // Método para obtener un producto por su id
     async get(id: number): Promise<Product> {
         try {
             return await this.#http.get<Product>(SERVER + "/products/" + id);
@@ -42,6 +50,7 @@ export class ProductsService {
         }
     }
 
+    // Método para insertar un producto
     async insertProduct (product: ProductInsert): Promise<Product> {
         try {
             const response = await this.#http.post(SERVER + "/products", product);
@@ -67,6 +76,7 @@ export class ProductsService {
         }
     }
 
+    // Método para borra un producto
     async deleteProduct (id: number): Promise<void> {
         try {
             await this.#http.delete(SERVER + "/products/" + id);
@@ -90,6 +100,7 @@ export class ProductsService {
         }
     }
 
+    // Método para crear la tarjeta de un producto
     toHTML(product: Product): HTMLDivElement {
 
         // -------------------- CARD ------------------
@@ -238,6 +249,7 @@ export class ProductsService {
         return cardDiv;
     }
 
+    // Método para buscar un producto y borrarlo
     findProductAndDelete(card: HTMLDivElement): void {
         const deleteButton = card.querySelector("button.btn-danger");
         if (deleteButton) {

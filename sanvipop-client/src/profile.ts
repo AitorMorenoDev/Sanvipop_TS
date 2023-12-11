@@ -2,15 +2,23 @@
 Desarrollo web en entorno cliente: Tema 1 - JavaScript.
 Proyecto final en TypeScript */
 
-// Importamos las clases, interfaces y librerias necesarias
+// En este fichero se encuentra el código relacionado con el perfil de usuarios
+
+// Importamos la biblioteca Sweetalert
 import Swal from "sweetalert2";
+
+// Importamos las clases AuthService y UserService desde sus respectivos archivos
 import { AuthService } from "./classes/auth-service";
 import { UserService } from "./classes/user-service";
+
+// Importamos las interfaces, UserResponse, UserProfileEdit, UserPasswordEdit y UserPhotoEdit desde sus respectivos archivos
 import {  UserResponse } from "./interfaces/responses";
-import { API_KEY } from "./constants";
 import { UserProfileEdit } from "./interfaces/user";
 import { UserPasswordEdit } from "./interfaces/user";
 import { UserPhotoEdit } from "./interfaces/user";
+
+// Importamos la constante API_KEY desde el archivo constants.ts (que contiene la clave de la API de Bing Maps)
+import { API_KEY } from "./constants";
 
 // Instanciamos las clases AuthService y UserService
 const authService = new AuthService();

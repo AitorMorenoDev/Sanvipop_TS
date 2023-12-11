@@ -2,11 +2,17 @@
 Desarrollo web en entorno cliente: Tema 1 - JavaScript.
 Proyecto final en TypeScript */
 
+// En este fichero se encuentra el código para el index, en el que se muestran todos los productos
+
+// Importamos la biblioteca Sweetalert
+import Swal from "sweetalert2";
+
 // Importamos las clases, interfaces y librerias necesarias
 import { ProductsService } from "./classes/products-service";
-import { Product } from "./interfaces/product";
 import { AuthService } from "./classes/auth-service";
-import Swal from "sweetalert2";
+
+// Importamos las interfaces, Product y ProductsResponse desde sus respectivos archivos
+import { Product } from "./interfaces/product";
 import { ProductsResponse } from "./interfaces/responses";
 
 // Instanciamos las clases ProductsService y AuthService

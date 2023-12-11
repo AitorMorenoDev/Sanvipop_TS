@@ -2,12 +2,14 @@
 Desarrollo web en entorno cliente: Tema 1 - JavaScript.
 Proyecto final en TypeScript */
 
+// En este fichero se encuentra el código para la creación de productos
+
 // Importamos las clases ProductsService, CategoriesService y AuthService desde sus respectivos archivos
 import { ProductsService } from "./classes/products-service.js";
 import { CategoriesService } from "./classes/categories-service.js";
 import { AuthService } from "./classes/auth-service.js";
 
-// Importamos las interfaces, ProductInsert y Category desde sus respectivos archivos
+// Importamos las interfaces, ProductInsert, Category y CategoryResponse desde sus respectivos archivos
 import { ProductInsert } from "./interfaces/product.js";
 import { Category } from "./interfaces/category.js";
 import { CategoriesResponse } from "./interfaces/responses.js";

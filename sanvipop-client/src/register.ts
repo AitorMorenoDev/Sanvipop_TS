@@ -4,10 +4,14 @@ Proyecto final en TypeScript */
 
 // En este fichero se encuentra el código para el registro de usuarios
 
-// Importamos las clases, interfaces y librerias necesarias
+// Importamos la biblioteca Sweetalert
 import Swal from "sweetalert2";
+
+// Importamos las clases MyGeolocation y AuthService desde sus respectivos archivos
 import { MyGeolocation } from "../src/classes/my-geolocation";
 import { AuthService } from "./classes/auth-service";
+
+// Importamos la interfaz User desde el archivo interfaces/user.ts
 import { User } from "./interfaces/user";
 
 // Instanciamos la clase AuthService
@@ -39,57 +43,14 @@ document.getElementById("form-register")!.addEventListener("submit", async (even
         return;
     }
     
-    // Obtenemos la imagen del usuario en base64 con relación de aspecto 1 y tamaño máximo de 200px
+    // Obtenemos la imagen del usuario en base64
     const readFile = (input: HTMLInputElement): Promise<string> => {
         return new Promise((resolve, reject) => {
-            const file = input.files && input.files[0];
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(input.files![0]);
 
-            const reader = new FileReader();
-
-            reader.onload = async (): Promise<void> => {
-                const image = new Image();
-                image.src = reader.result as string;
-
-                image.onload = (): void => {
-                    const canvas = document.createElement("canvas");
-                    const context = canvas.getContext("2d");
-
-                    const maxSize = 200;
-                    let width = image.width;
-                    let height = image.height;
-
-                    if (width > height) {
-                        if (width > maxSize) {
-                            height *= maxSize / width;
-                            width = maxSize;
-                        }
-                    } else {
-                        if (height > maxSize) {
-                            width *= maxSize / height;
-                            height = maxSize;
-                        }
-                    }
-
-                    canvas.width = width;
-                    canvas.height = height;
-
-                    context?.drawImage(image, 0, 0, width, height);
-
-                    const resizedImage = canvas.toDataURL("image/jpeg");
-
-                    resolve(resizedImage);
-                };
-            };
-
-            reader.onerror = (): void => {
-                reject(new Error("Error reading file"));
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            } else {
-                reject(new Error("No file"));
-            }
+            fileReader.onload = (): void => resolve(fileReader.result as string);
+            fileReader.onerror = (error): void => reject(error);
         });
     };
 
